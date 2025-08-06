@@ -6,6 +6,6 @@
 </template>
 
 <script setup lang="ts">
-  const items = ref(['Typescript', 'Java', 'PHP', 'GoLang']);
-  const value = ref('Typescript');
+  const items = languages;
+  const value = ref<string>(languages.value[0] ?? '');
 </script>
