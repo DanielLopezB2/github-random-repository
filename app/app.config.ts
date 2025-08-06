@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  title: 'Catastro V2',
+  title: 'Github Random Repository',
   ui: {
     colors: {
       primary: 'primary',
@@ -7,10 +7,9 @@ export default defineAppConfig({
       success: 'success',
       neutral: 'zinc',
     },
-    button: {
-      defaultVariants: {
-        // Set default button color to neutral
-        // color: 'neutral'
+    separator: {
+      slots: {
+        label: 'text-sm text-primary-100/70',
       },
     },
   },

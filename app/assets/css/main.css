@@ -38,3 +38,7 @@
     --color-success-900: #035F34;
     --color-success-950: #013A21;
 }
+
+html , body {
+    color: #F0E6FF;
+}
