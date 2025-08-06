@@ -48,6 +48,7 @@
 
   import type { FetchError } from 'ofetch';
 
+  const toast = useToast();
   const page = Math.floor(Math.random() * 10) + 1;
   const loadingStatus = useState('status');
   const repositoryDataList = useState<GithubRepositoryResponse | undefined>('dataList');
@@ -56,6 +57,10 @@
   const queryValue = useState<string>('query');
 
   async function handleSearch() {
+    toast.add({
+      title: `Searching a repository for ${queryValue.value}`,
+      color: 'secondary',
+    });
     const { data, status, error } = await useFetch<GithubRepositoryResponse>(
       `https://api.github.com/search/repositories?q=${queryValue.value}&page=${page}`,
     );

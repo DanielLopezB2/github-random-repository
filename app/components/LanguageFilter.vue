@@ -12,6 +12,7 @@
     Item,
   } from '~/interfaces/github-repository-response.interface';
 
+  const toast = useToast();
   const items = languages;
   const value = ref<string>(languages.value[0] ?? '');
   const page = Math.floor(Math.random() * 10) + 1;
@@ -25,6 +26,10 @@
   const queryValue = useState<string>('query', () => '');
 
   async function handleSearch() {
+    toast.add({
+      title: `Searching a repository for ${value.value}`,
+      color: 'secondary',
+    });
     const { data, status, error } = await useFetch<GithubRepositoryResponse>(
       `https://api.github.com/search/repositories?q=${value.value}&page=${page}`,
     );
