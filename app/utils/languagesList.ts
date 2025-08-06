@@ -19,4 +19,5 @@ export const languages = ref([
   'Shell',
   'R',
   'Objective-C',
+  'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
 ]);

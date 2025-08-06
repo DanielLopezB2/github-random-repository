@@ -22,6 +22,7 @@
   );
   const repositoryData = useState<Item | undefined>('data', () => undefined);
   const unexpectedError = useState<FetchError<unknown> | undefined>('error', () => undefined);
+  const queryValue = useState<string>('query', () => '');
 
   async function handleSearch() {
     const { data, status, error } = await useFetch<GithubRepositoryResponse>(
@@ -37,5 +38,6 @@
       repositoryData.value = undefined;
     }
     unexpectedError.value = error.value;
+    queryValue.value = value.value;
   }
 </script>

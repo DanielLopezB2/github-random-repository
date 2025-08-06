@@ -1,12 +1,14 @@
 <template>
-  <div class="flex flex-col">
-    <main-title />
-    <language-filter />
-    <repository-results v-if="repositoryDataList?.items" />
-    <repository-skeleton v-if="loadingStatus !== 'success'" />
-    <repository-not-found v-if="repositoryDataList?.items.length === 0" />
-    <unexpected-error v-if="unexpectedError" />
-  </div>
+  <client-only>
+    <div class="flex flex-col">
+      <main-title />
+      <language-filter />
+      <repository-results v-if="repositoryDataList?.items.length! > 0" />
+      <repository-skeleton v-if="loadingStatus === 'pending'" />
+      <repository-not-found v-if="repositoryDataList?.items.length === 0" />
+      <unexpected-error v-if="unexpectedErrorState" />
+    </div>
+  </client-only>
 </template>
 
 <script setup lang="ts">
@@ -15,5 +17,5 @@
 
   const loadingStatus = useState('status');
   const repositoryDataList = useState<GithubRepositoryResponse | undefined>('dataList');
-  const unexpectedError = useState<FetchError<unknown> | undefined>('error');
+  const unexpectedErrorState = useState<FetchError<unknown> | undefined>('error');
 </script>
